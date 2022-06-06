@@ -1,0 +1,105 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+    body
+    {
+        background-color: #373e98;
+        font-family: 'Poppins', sans-serif;
+    }
+    .heading
+    {
+        color: white;
+        font-size: 80px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .container
+    {
+        width:800px;
+        padding: 20px;
+        margin:40px auto;
+        background-color: #fee36e;
+    }
+    .box
+    {
+        background-color: #f16775;
+        padding: 50px;
+        margin:10px;
+        
+    }
+    .search
+    {
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        background-color: #2a2a2a;
+        color: white;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    .search:hover{
+
+        background-color: #484242;
+        color: white;
+        cursor: pointer;
+        outline: none;
+    }
+    input
+    {
+        width: 100%;
+        padding: 10px;
+        border: 3px solid rgb(2, 2, 2);
+        box-sizing: border-box;
+    }
+    .update
+    {
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+        padding:10px;
+        text-decoration: none;
+        margin-right: 5px;
+
+    }
+    .update:hover{
+        background-color: #18590e;
+        color: white;
+        cursor: pointer;
+        outline: none;
+    }
+    .delete
+    {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        padding:10px;
+        text-decoration: none;
+    }
+    .delete:hover{
+        background-color: #d61515;
+        color: white;
+        cursor: pointer;
+        outline: none;
+    }
+    .box p
+    {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<div class="heading">To-Do List</div>
+<div class="container">
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{form.title}}
+    <input class="search" type="submit" name="Create Task">
+</form>
+{% for task in tasks %}
+    <div class="box">
+        <a class="update" href="{% url 'update' task.id %}">Update</a>
+        <a class="delete" href="{% url 'delete' task.id %}">Delete</a>
+        <p>{{task}}</p>
+    </div>
+{% endfor %}
+</div>

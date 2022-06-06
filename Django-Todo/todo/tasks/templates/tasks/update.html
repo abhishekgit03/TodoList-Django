@@ -1,0 +1,42 @@
+<style>
+    body
+    {
+        background-color: #373e98;
+        font-family: 'Poppins', sans-serif;
+    }
+    .heading
+    {
+        color: #f16775;
+        font-size: 80px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .container
+    {
+    
+        width:800px;
+        padding: 20px;
+        margin:40px auto;
+        background-color: #fee36e;
+        border-radius: 4px;
+    }
+    input
+    {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px;
+        border: 3px solid rgb(2, 2, 2);
+        box-sizing: border-box;
+    }
+</style>
+
+
+
+<div class="container">
+<div class="heading">Update Task here:</div>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.title}}
+    <input type="submit" name="update task" >
+</form>
+</div>
